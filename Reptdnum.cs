@@ -1,18 +1,18 @@
 using System;
-class Duplrtd
+class Reptdstr
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Enter a String");
-        String str=Console.ReadLine();
-        int count=0;
-        char[] strArray=str.ToCharArray();
+        Console.WriteLine("Enter a string");
+        string str = Console.ReadLine();
+        int count = 0;
+        char[] strArray = str.ToCharArray();
         Console.WriteLine("Duplicate characters in string");
-        for(int i=0; i<strArray.Length; i++)
+        for (int i = 0; i < strArray.Length; i++)
         {
-            for(int j=i+1; j<strArray.Length; j++)
+            for (int j = i + 1; j < strArray.Length; j++)
             {
-                if(strArray[i]==strArray[j])
+                if (strArray[i] == strArray[j])
                 {
                     Console.WriteLine(strArray[j]);
                     count++;
@@ -20,6 +20,6 @@ class Duplrtd
                 }
             }
         }
-        Console.WriteLine("Total duplicate characters found:"+count);
+        Console.WriteLine("Total duplicate characters found: " + count);
     }
 }

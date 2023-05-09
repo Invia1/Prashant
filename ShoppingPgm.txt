@@ -1,0 +1,46 @@
+class Mall
+{
+    int amount;
+    public int ShoppingDetails
+    {
+        set
+        {
+            amount = value;
+            if (amount>=10000)
+            {
+                Console.WriteLine("Hurreeyy! Your amount is enough to go for a Shopping.");
+            }
+            else
+            {
+                Console.WriteLine("Oopss! you dont have enough amount to go for a Shopping, just stay at Home.");
+            }
+        }
+        get
+        {
+            return amount;
+        }
+    }
+}
+
+class Shopping
+{
+    public void MallDetails()
+    {
+        Console.WriteLine("Which mall did you want to go, please enter the name");
+        string str;
+        str = Console.ReadLine();
+        var obj = new Mall();
+        Console.WriteLine("How much amount do you have, please Enter!");
+        obj.ShoppingDetails =int.Parse(Console.ReadLine());
+    }
+}
+
+class Person
+{
+public static void Main()
+    {
+        var obj1=new Shopping();
+        obj1.MallDetails();
+    }
+}
+

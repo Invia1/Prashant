@@ -1,0 +1,52 @@
+using System;
+using System.Collections;
+
+class Company
+{
+    ArrayList arr = new ArrayList()
+    {
+       101, "Shubham","Dwarika",103,"Rojer","Denmark"
+    };
+    public void AddData()
+    {
+        arr.Add(104);
+        arr.Add("Stephan");
+        arr.Add("Poland");
+
+        foreach (var ele in arr)
+        {
+            Console.WriteLine(ele);
+        }
+    }
+    public void Removing()
+    {
+        arr.Remove(0);
+        arr.Remove(7);
+
+        foreach(var tet in arr)
+        {
+            Console.WriteLine(tet);
+        }
+    }
+
+    public void Updating()
+    {
+        arr.Insert(0, "Stephan");
+        arr.Insert(2, " Rajeev");
+
+        foreach(var ece in arr)
+        {
+            Console.WriteLine(ece);
+        }
+    }
+    public static void Main()
+    {
+        Company obj1=new Company();
+       //obj1.AddData();
+       //obj1.Removing();
+       obj1.Updating();
+
+    }
+}
+
+

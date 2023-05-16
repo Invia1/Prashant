@@ -1,0 +1,167 @@
+//MODEL
+
+using System;
+
+namespace Generics_Final.Model
+{
+     class Employee
+    {
+        public int eID { get; set; }
+        public string eName { get; set; }
+        public int eAge { get; set; }
+    }
+}
+
+//SERVICE
+
+using System;
+using System.Collections.Generic;
+using Generics_Final.Model;
+
+namespace Generics_Final.Service
+{
+     class EmployeeDetails
+    {
+        List<Employee> objList = new List<Employee>();
+
+        public void switchfunc(int x)
+        {
+            switch (x)
+            {
+                case 1:
+                    {
+                        addData();
+                    }
+                    break;
+
+                case 2:
+                    {
+                        removeData();
+                    }
+                    break;
+
+                case 3:
+                    {
+                        searchData();
+                    }
+                    break;
+            }
+        }
+
+        public void addData()
+        {
+            Employee obj2 = new Employee();
+            Console.WriteLine("Add more Employees in the list:");
+            Console.WriteLine("Enter ID of the Employee:");
+            obj2.eID = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Name of the Employee:");
+            obj2.eName = Console.ReadLine();
+            Console.WriteLine("Enter Age of the Employee:");
+            obj2.eAge = Convert.ToInt32(Console.ReadLine());
+
+            createEmployee(obj2);
+            List < Employee > strlist = getEmployeeList();
+            foreach(var item in strlist)
+            {
+                Console.WriteLine(item.eID + " " + item.eName+" "+item.eAge);
+            }
+
+        }
+
+        public int createEmployee(Employee emp)
+        {
+            objList.Add(emp);
+            return 0;
+        }
+
+        public List<Employee> getEmployeeList()
+        {
+            return objList;
+        }
+
+        public void removeData()
+        {
+            List<Employee> empList = getEmployeeList();
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+            }
+            empList.RemoveAt(1);
+            Console.WriteLine("Updated List:");
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+            }
+
+        }
+
+        public void searchData()
+        {
+            List<Employee> empList = getEmployeeList();
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+            }
+            var search = empList.Contains(empList[1]);
+            Console.WriteLine("Searched Data: " + empList[1]);
+            if (search == true)
+            {
+                Console.WriteLine("Searched Data is present in given DataList.");
+            }
+            else
+            {
+                Console.WriteLine("Searched Data is not present in given data list");
+            }
+        }
+    }
+}
+
+//MAIN 
+
+using System;
+using Generics_Final.Model;
+using Generics_Final.Service;
+
+
+namespace Generics_Final.Main
+{
+     class EmpData
+    {
+
+        public static void Main()
+        {
+
+            Employee obj = new Employee();
+            obj.eID = 101;
+            obj.eName = "Shivang";
+            obj.eAge = 23;
+
+            EmployeeDetails esobj = new EmployeeDetails();
+            esobj.createEmployee(obj);
+
+            Employee obj1 = new Employee();
+            obj1.eID = 102;
+            obj1.eName = "Shuryansh";
+            obj1.eAge = 24;
+            esobj.createEmployee(obj1);
+
+            List<Employee> objList = esobj.getEmployeeList();
+            Console.WriteLine("Employee's Data:");
+            foreach (var data in objList)
+            {
+                Console.WriteLine(data.eID + " " + data.eName + " " + data.eAge);
+            }
+
+            Console.WriteLine("Enter-1: To Add data in list.");
+            Console.WriteLine("Enter-2: To remove data from the list.");
+            Console.WriteLine("Enter-3: To search data from the list");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            esobj.switchfunc(n);
+
+        }
+
+
+
+    }
+}

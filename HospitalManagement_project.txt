@@ -1,0 +1,135 @@
+//MODEL 
+
+using System;
+
+
+namespace Hospital_MngSys_Project.Model
+{
+     class Patient
+    {
+        public int prid
+        { get; set; }
+        public string fname
+        { get; set; }
+        public string lname
+        { get; set; }
+        public long pno
+        { get; set; }
+        public string gd
+        { get; set; } 
+        public int page
+        { get; set; }
+        public string add
+        { get; set; }
+        public long adhno
+        { get; set; }
+        public string spc
+        { get; set; }
+    }
+}
+
+---------------------------------------------------------
+//SERVICE
+
+using System;
+using System.Runtime.InteropServices;
+using Hospital_MngSys_Project.Model;
+
+namespace Hospital_MngSys_Project.Service
+{
+     class PatientData
+    {
+        List<Patient> pt=new List<Patient>();
+        int num=int.Parse(Console.ReadLine());
+       
+        public void SwitchCase()
+        {
+            switch (num)
+            {
+                case 1:
+                    pt.Add(new Patient());
+                    break;
+
+                    case 2:
+                    pt.Add(new Patient());
+                    break;
+
+                    case 3:
+                    pt.Add(new Patient());
+                    break;
+            }
+        }
+
+        public void AddData()
+        {
+            Patient ptnt = new Patient();
+            Console.WriteLine("Now Please fill your asking details Carefully");
+            Console.WriteLine("-Please enter your patient registration Id.");
+            ptnt.prid = int.Parse(Console.ReadLine());
+            Console.WriteLine("Please Enter your first name.");
+            ptnt.fname = Console.ReadLine();
+            Console.WriteLine("Please Enter your last name.");
+            ptnt.lname = Console.ReadLine();
+            Console.WriteLine("Please Enter your phone no.");
+            ptnt.pno=long.Parse(Console.ReadLine());
+            Console.WriteLine("Plesee Enter your gender.");
+            ptnt.gd = Console.ReadLine();
+            Console.WriteLine("Please Enter your age.");
+            ptnt.page = int.Parse(Console.ReadLine());
+            Console.WriteLine("Plesee Enter your Address");
+            ptnt.add = Console.ReadLine();
+            Console.WriteLine("Plesee Enter your Aadhar no.");
+            ptnt.adhno=long.Parse(Console.ReadLine());
+            Console.WriteLine("Plesee Enter your speciality cosulted Department");
+            ptnt.spc = Console.ReadLine();
+            AddDetails(ptnt);
+        }
+
+        public void AddDetails(Patient pet)
+        {
+            pt.Add(pet);
+            Console.WriteLine("\n Your Data is sucessfully added.");
+        }
+        public void display()
+        {
+            foreach(var pem in  pt) 
+            {
+                Console.WriteLine("\n Heres your given details.");
+             Console.WriteLine("\n Your Id- "+pem.prid);
+                Console.WriteLine("Your first name is: " + pem.fname);
+                Console.WriteLine("Your Last name is: " + pem.lname);
+                Console.WriteLine("Your phone no. is: "+  pem.pno);
+                Console.WriteLine("Your gender is: " + pem.gd);
+                Console.WriteLine("Your age is: " + pem.gd);
+                Console.WriteLine("Your address is: " + pem.add);
+                Console.WriteLine("Your aadhar no is: " + pem.adhno);
+                Console.WriteLine("Your speciality consulted is: " + pem.spc);
+            }
+        }   
+    }
+}
+
+--------------------------------------------------------------------------------------------
+//MAIN UI
+
+using System;
+using Hospital_MngSys_Project.Model;
+using Hospital_MngSys_Project.Service;
+
+namespace Hospital_MngSys_Project.MainUI
+{
+     class FinalData
+    {
+        public static void Main()
+        {
+            FinalData obj=new FinalData();
+            Console.WriteLine("Welcome to the RIM hospital.");
+            Console.WriteLine("We are specialize in 3 major department"+"\n -General Medicine"+"\n -Orthopaedics"+"\n -Dental");
+            Console.WriteLine(" AT which department would to like to go"+"\n :Enter-1 for General Medicine"+" \n :Enter-2 for Orthopaedics"+"\n :Enter-3 for Dental");
+
+            PatientData pData = new PatientData();
+            pData.AddData();
+            pData.display();
+        }
+    }
+}
